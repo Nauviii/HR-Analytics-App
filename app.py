@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import joblib
 import plotly.express as px
+import plotly.graph_objects as go
 
 st.set_page_config(layout="wide")
 
@@ -69,26 +70,67 @@ def show_detail(df: pd.DataFrame) -> None:
 
     cluster_row = df.loc[df["Cluster"] == selected_cluster].squeeze()
 
-    # --- Karakteristik Cluster (Improved) ---
-    st.write("### Karakteristik Cluster")
+    # Kolom numerik (exclude beberapa kolom)
+    exclude_cols = ["Cluster", "Cluster Size", "Attrition Proportion"]
+    feature_cols = [c for c in df.columns if c not in exclude_cols]
+    num_df = df[feature_cols].select_dtypes(include="number")
 
-    # Tampilkan tabel ringkas
+    if not num_df.empty:
+        # --- 1. Bar Chart: Top Feature Paling Beda ---
+        st.write("### Top Feature yang Membedakan")
+        cluster_mean = num_df.loc[df["Cluster"] == selected_cluster].mean()
+        global_mean = num_df.mean()
+
+        diff = ((cluster_mean - global_mean) / global_mean).abs().sort_values(ascending=False)
+
+        # Drop semua kolom yang mengandung kata "monthly" dan "income"
+        drop_candidates = [c for c in diff.index if "monthly" in c.lower() and "income" in c.lower()]
+        diff = diff.drop(drop_candidates, errors="ignore")
+
+        top_features = diff.head(5).index
+
+        compare_df = pd.DataFrame({
+            "Feature": top_features,
+            "Cluster": cluster_mean[top_features].values,
+            "Global": global_mean[top_features].values
+        })
+
+        fig_bar = go.Figure()
+        fig_bar.add_trace(go.Bar(x=compare_df["Feature"], y=compare_df["Cluster"], name="Cluster"))
+        fig_bar.add_trace(go.Bar(x=compare_df["Feature"], y=compare_df["Global"], name="Global"))
+        fig_bar.update_layout(barmode="group", title="Feature yang Paling Berpengaruh")
+        st.plotly_chart(fig_bar, use_container_width=True)
+
+        # --- 2. Radar Chart: Profil Cluster ---
+        st.write("### 🕸️ Profil Cluster (Radar Chart)")
+        radar_features = diff.head(6).index  # ambil 6 feature teratas setelah drop
+        fig_radar = go.Figure()
+
+        fig_radar.add_trace(go.Scatterpolar(
+            r=cluster_mean[radar_features].values,
+            theta=radar_features,
+            fill="toself",
+            name=f"Cluster {selected_cluster}"
+        ))
+        fig_radar.add_trace(go.Scatterpolar(
+            r=global_mean[radar_features].values,
+            theta=radar_features,
+            fill="toself",
+            name="Global"
+        ))
+
+        fig_radar.update_layout(
+            polar=dict(radialaxis=dict(visible=True)),
+            title="Radar Chart – Cluster vs Global"
+        )
+        st.plotly_chart(fig_radar, use_container_width=True)
+
+    # --- Karakteristik Cluster (Ringkasan) dipindah ke bawah ---
+    st.write("### 📊 Karakteristik Umum")
     char_df = pd.DataFrame(cluster_row).reset_index()
     char_df.columns = ["Atribut", "Nilai"]
     st.dataframe(char_df, use_container_width=True)
 
-    # Pisahkan numerik & kategorik dari Series
-    exclude_cols = ["Cluster"]
-    char_data = cluster_row.drop(labels=exclude_cols, errors="ignore")
-
-    num_data = char_data[char_data.apply(lambda x: pd.api.types.is_numeric_dtype(type(x)))]
-    cat_data = char_data[~char_data.apply(lambda x: pd.api.types.is_numeric_dtype(type(x)))]
-
-
-    # Kalau ada kategorik, tampilkan tabel kecil
-    if not cat_data.empty:
-        st.write("#### Atribut Kategorikal")
-        st.table(cat_data.reset_index().rename(columns={"index": "Atribut", 0: "Nilai"}))
 
 # --- Mapping Cluster Number -> Label ---
 def map_cluster_labels(df: pd.DataFrame) -> pd.DataFrame:
