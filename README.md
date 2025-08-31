@@ -1,6 +1,6 @@
-# 📊 Proyek Akhir: Analisis Attrition Karyawan Perusahaan Edutech
+# Proyek Akhir: Menyelesaikan Permasalahan Perusahaan Edutech
 
-## 🏢 Business Understanding
+## Business Understanding
 
 **Latar Belakang**  
 Jaya Jaya Maju adalah perusahaan multinasional di bidang Edutech yang berdiri sejak tahun 2000 dengan lebih dari 1.000 karyawan tersebar di seluruh Indonesia.  
@@ -10,7 +10,7 @@ Untuk itu, manajemen HR ingin memahami faktor-faktor yang memengaruhi keputusan 
 
 ---
 
-### 🎯 Permasalahan Bisnis
+## Permasalahan Bisnis
 - Mengidentifikasi faktor-faktor utama penyebab tingginya attrition rate.  
 - Mengatasi **data imbalance** dalam dataset attrition.  
 - Membuat model prediksi attrition karyawan berbasis Machine Learning.  
@@ -18,7 +18,7 @@ Untuk itu, manajemen HR ingin memahami faktor-faktor yang memengaruhi keputusan 
 
 ---
 
-### 📦 Cakupan Proyek
+## Cakupan Proyek
 1. **Data Preprocessing & Feature Engineering**  
    - Membersihkan data, menangani missing values, encoding fitur kategorikal, dan scaling.  
 2. **Exploratory Data Analysis (EDA)**  
@@ -32,6 +32,7 @@ Untuk itu, manajemen HR ingin memahami faktor-faktor yang memengaruhi keputusan 
 
 ---
 
+## Persiapan
 ### 🔗 Dataset
 - **Sumber Data**: [Employee Data - Dicoding](https://github.com/dicodingacademy/dicoding_dataset/blob/main/employee/employee_data.csv)  
 - **Jumlah Data**: 1.470 karyawan dengan tingkat attrition **12.18%** (179 karyawan keluar).  
