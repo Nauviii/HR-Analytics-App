@@ -1,90 +1,91 @@
-# Proyek Akhir: Menyelesaikan Permasalahan Perusahaan Edutech
+# 📊 Proyek Akhir: Analisis Attrition Karyawan Perusahaan Edutech
 
-## Business Understanding
+## 🏢 Business Understanding
 
-Jelaskan latar belakang bisnis dari perushaan tersebut.
-Jaya Jaya Maju merupakan salah satu perusahaan multinasional yang telah berdiri sejak tahun 2000. Ia memiliki lebih dari 1000 karyawan yang tersebar di seluruh penjuru negeri. 
-Walaupun telah menjadi menjadi perusahaan yang cukup besar, Jaya Jaya Maju masih cukup kesulitan dalam mengelola karyawan. Hal ini berimbas tingginya attrition rate (rasio jumlah karyawan yang keluar dengan total karyawan keseluruhan) hingga lebih dari 10%.
-Untuk mencegah hal ini semakin parah, manajer departemen HR ingin mengidentifikasi berbagai faktor yang mempengaruhi tingginya attrition rate tersebut.
+**Latar Belakang**  
+Jaya Jaya Maju adalah perusahaan multinasional di bidang Edutech yang berdiri sejak tahun 2000 dengan lebih dari 1.000 karyawan tersebar di seluruh Indonesia.  
+Meskipun perusahaan sudah berkembang pesat, tingkat **attrition rate** (rasio karyawan keluar terhadap total karyawan) perusahaan cukup tinggi, mencapai **>10%**.  
+Tingginya attrition rate berpotensi meningkatkan biaya perekrutan, pelatihan, dan mengganggu produktivitas perusahaan.  
+Untuk itu, manajemen HR ingin memahami faktor-faktor yang memengaruhi keputusan karyawan untuk keluar dan mengembangkan strategi retensi yang tepat.  
 
-### Permasalahan Bisnis
+---
 
-Tuliskan seluruh permasalahan bisnis yang akan diselesaikan.
-- Menganalisis faktor-faktor yang mempengaruhi tingginya nilai Attrition rate.
-- Mengatasi imbalanced data terkait attrition rate
-- Menjawab permasalahan bisnis dan membuat kesimpulan
+### 🎯 Permasalahan Bisnis
+- Mengidentifikasi faktor-faktor utama penyebab tingginya attrition rate.  
+- Mengatasi **data imbalance** dalam dataset attrition.  
+- Membuat model prediksi attrition karyawan berbasis Machine Learning.  
+- Menyediakan insight berbasis data untuk membantu pengambilan keputusan manajemen.  
 
-### Cakupan Proyek
+---
 
-Tuliskan cakupan proyek yang akan dikerjakan.
-- Melakukan pendekatan statistik dan EDA untuk menemukan hubungan antar fitur
-- Membersihkan data dan melakukan feature engineering
-- Membuat model machine learning
-- Melakukan evaluasi model
-- Membuat dashboard yang berisi kesimpulan dan jawaban dari permasalahan bisnis yang diselesaikan
+### 📦 Cakupan Proyek
+1. **Data Preprocessing & Feature Engineering**  
+   - Membersihkan data, menangani missing values, encoding fitur kategorikal, dan scaling.  
+2. **Exploratory Data Analysis (EDA)**  
+   - Visualisasi dan analisis statistik untuk menemukan pola dan insight.  
+3. **Model Machine Learning**  
+   - Membangun model klasifikasi untuk memprediksi attrition karyawan.  
+4. **Evaluasi Model**  
+   - Menggunakan metrik evaluasi seperti Confusion Matrix, Classification Report, dan ROC-AUC.  
+5. **Dashboard Interaktif**  
+   - Membuat aplikasi analisis berbasis **Streamlit** untuk memudahkan eksplorasi data dan insight.  
 
-### Persiapan
+---
 
-Sumber data: https://github.com/dicodingacademy/dicoding_dataset/blob/main/employee/employee_data.csv
+### 🔗 Dataset
+- **Sumber Data**: [Employee Data - Dicoding](https://github.com/dicodingacademy/dicoding_dataset/blob/main/employee/employee_data.csv)  
+- **Jumlah Data**: 1.470 karyawan dengan tingkat attrition **12.18%** (179 karyawan keluar).  
 
-Setup environment:
+---
 
-```
+### 🛠️ Tech Stack
+- **Python** (Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn)
+- **Streamlit** (Pembuatan Dashboard)
+- **Joblib** (Model Serialization)
+- **GitHub** (Version Control)
 
+---
+
+### ⚙️ Persiapan & Setup
+Clone repository dan install dependencies:
+```bash
+git clone https://github.com/Nauviii/Data-Science-HR-Analytics.git
+cd Data-Science-HR-Analytics
+pip install -r requirements.txt
+streamlit run app.py
 ```
 
 ## Business Dashboard
 
-Jelaskan tentang business dashboard yang telah dibuat. Jika ada, sertakan juga link untuk mengakses dashboard tersebut.
-link akses dashboard : https://hr-analytics-app.streamlit.app/
+🔗 Akses Dashboard: https://hr-analytics-app.streamlit.app/
 
-Dashboard yang saya buat merupakan aplikasi web interaktif menggunakan Streamlit untuk menganalisis tingkat attrition (turnover) karyawan dengan 1,470 total karyawan dan tingkat attrition 12.18% (179 karyawan). Bisnis dashboard yang saya buat mencangkup tiga poin utama, yaitu ekplorasi data analisis, Kesimpulan model machine learninng, dan Insight yang didapakan.
+Dashboard ini adalah aplikasi interaktif berbasis Streamlit yang membantu stakeholder menganalisis tingkat attrition. Dashboard mencakup:
+1. EDA (Exploratory Data Analysis) – Visualisasi distribusi data dan korelasi antar fitur.
+2. Model Results – Hasil prediksi attrition dengan metrik evaluasi.
+3. Insights & Recommendations – Temuan utama dan rekomendasi actionable.
 
 ## Conclusion
-
 📋 Ringkasan Proyek
-Proyek ini berhasil mengembangkan dashboard analisis attrition karyawan yang komprehensif menggunakan teknologi machine learning dan web application. Dashboard ini menganalisis data 1,470 karyawan dengan tingkat attrition 12.18% (179 karyawan) melalui pendekatan data science end-to-end.
 
-🏆 Pencapaian Utama
-1. Pengembangan Model Machine Learning
+Proyek ini mengembangkan end-to-end pipeline data science untuk memprediksi attrition karyawan dan menyajikan insight melalui dashboard interaktif.
+- Data: 1.470 karyawan, attrition rate 12.18%.
+- Hasil: Model Machine Learning teroptimasi dengan PCA untuk dimensionality reduction, tersimpan dalam format joblib.
+- Output: Dashboard analitik HR berbasis Streamlit.
 
-✅ Berhasil membangun model klasifikasi untuk prediksi attrition
-✅ Model menggunakan teknik PCA (Principal Component Analysis) untuk dimensionality reduction
-✅ Evaluasi model tersimpan dalam format joblib untuk efisiensi deployment
-✅ Implementasi classification report, confusion matrix, dan ROC curve analysis
+## Rekomendasi Action Items (Optional)
+1. Peningkatan Kepuasan Kerja & Lingkungan
+        - Rutin melakukan employee engagement survey.
+        - Program kesejahteraan dan komunikasi terbuka.
 
-2. Web Application Development
+2. Program Retensi Karyawan Muda
+        - Mentorship, pelatihan soft skill, dan rotasi kerja.
 
-✅ Dashboard interaktif menggunakan Streamlit framework
-✅ Multi-page navigation dengan 3 section utama (EDA, Model Results, Insights)
-✅ Responsive design dengan layout yang user-friendly
-✅ Real-time data visualization dengan matplotlib dan seaborn
+3. Optimasi Manajemen R&D
+        - Evaluasi beban kerja, pemberian reward untuk inovasi.
+   
+4. Dukungan Transisi Manajemen
+        - Onboarding manager baru & sesi check-in rutin.
 
-3. Data Analytics & Visualization
-
-✅ Exploratory Data Analysis (EDA) untuk fitur numerik dan kategorikal
-✅ Statistical analysis untuk mengidentifikasi pola attrition
-✅ Interactive charts dengan proper legend dan labeling
-✅ Executive summary metrics untuk stakeholder communication
-
-### Rekomendasi Action Items (Optional)
-1. Tingkatkan kepuasan kerja & lingkungan
-        - Lakukan survey engagement secara rutin untuk mengidentifikasi faktor ketidakpuasan.
-        - Sediakan jalur komunikasi terbuka (feedback channel) dan program peningkatan kesejahteraan (well-being program).
-
-2. Strategi retensi khusus untuk karyawan muda
-        - Kembangkan program mentorship dan career development plan untuk karyawan baru.
-        - Fokuskan pelatihan soft skill dan peluang rotasi kerja untuk memperluas pengalaman.
-
-3. Perbaikan manajemen di R&D
-        - Tinjau workload dan budaya kerja di R&D.
-        - Pertimbangkan insentif dan reward khusus untuk inovasi agar karyawan merasa dihargai.
-
-4. Dukungan saat transisi manajemen
-        - Buat program onboarding manager baru untuk mengurangi gesekan dengan tim.
-        - Lakukan check-in meeting rutin selama periode kepemimpinan baru agar adaptasi lebih lancar.
-
-5. Tinjauan kompensasi dan benefit
-        - Lakukan benchmarking gaji dengan standar industri.
-        - Tawarkan benefit non-finansial seperti fleksibilitas kerja, pengembangan skill, atau bonus berbasis kinerja untuk menambah daya tarik perusahaan.
+5. Perbaikan Kompensasi & Benefit
+        - Benchmarking gaji dan penawaran benefit non-finansial.
 
